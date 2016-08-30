@@ -27,7 +27,7 @@ import java.net.URLEncoder;
 /**
  *
  * @author Игорь
- * @see <a href = "https://habrahabr.ru/post/261259/">Источкик кода класса YandexTranslate</a>
+ * @see <a href = "https://habrahabr.ru/post/261259/">Источкик кода класса YandexTranslate на HabraHabr</a>
  */
 public class YandexTranslate {
     private static int i = 0;
