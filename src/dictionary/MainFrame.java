@@ -6,6 +6,7 @@
 package dictionary;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,6 +48,7 @@ public class MainFrame extends javax.swing.JFrame {
         EngAddTextField = new javax.swing.JTextField();
         RusAddTextField = new javax.swing.JTextField();
         AddButton = new javax.swing.JButton();
+        YaTanslateButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(400, 400));
@@ -140,25 +142,33 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        YaTanslateButton.setFont(new java.awt.Font("Bookman Old Style", 0, 24)); // NOI18N
+        YaTanslateButton.setText("Перевод от Yandex");
+        YaTanslateButton.setName("YandexTranslate"); // NOI18N
+        YaTanslateButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                YaTanslateButtonMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout AddWordPanelLayout = new javax.swing.GroupLayout(AddWordPanel);
         AddWordPanel.setLayout(AddWordPanelLayout);
         AddWordPanelLayout.setHorizontalGroup(
             AddWordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AddWordPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddWordPanelLayout.createSequentialGroup()
                 .addContainerGap(48, Short.MAX_VALUE)
+                .addGroup(AddWordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(AddButton)
+                    .addGroup(AddWordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(EngAddTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(EngAddWordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(AddWordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddWordPanelLayout.createSequentialGroup()
-                        .addGroup(AddWordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(EngAddTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(EngAddWordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(AddWordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(RusAddTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(RusAddWordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddWordPanelLayout.createSequentialGroup()
-                        .addComponent(AddButton)
-                        .addGap(252, 252, 252))))
+                    .addGroup(AddWordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(RusAddTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(RusAddWordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(YaTanslateButton))
+                .addGap(35, 35, 35))
         );
         AddWordPanelLayout.setVerticalGroup(
             AddWordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,9 +181,11 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(AddWordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EngAddTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(RusAddTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
-                .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addGroup(AddWordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(AddButton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(YaTanslateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab2", AddWordPanel);
@@ -255,6 +267,14 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AddButtonMouseClicked
 
+    private void YaTanslateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YaTanslateButtonMouseClicked
+        try {
+            RusAddTextField.setText(YandexTranslate.translate("ru", EngAddTextField.getText()));
+        } catch (IOException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_YaTanslateButtonMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -303,6 +323,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField RusReadTextField;
     private javax.swing.JButton TranslateButton;
     private javax.swing.JPanel TranslatePanel;
+    private javax.swing.JButton YaTanslateButton;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
