@@ -48,7 +48,7 @@ public class MainFrame extends javax.swing.JFrame {
         EngAddTextField = new javax.swing.JTextField();
         RusAddTextField = new javax.swing.JTextField();
         AddButton = new javax.swing.JButton();
-        YaTanslateButton = new javax.swing.JButton();
+        YaTranslateButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(400, 400));
@@ -142,12 +142,12 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        YaTanslateButton.setFont(new java.awt.Font("Bookman Old Style", 0, 24)); // NOI18N
-        YaTanslateButton.setText("Перевод от Yandex");
-        YaTanslateButton.setName("YandexTranslate"); // NOI18N
-        YaTanslateButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        YaTranslateButton.setFont(new java.awt.Font("Bookman Old Style", 0, 24)); // NOI18N
+        YaTranslateButton.setText("Перевод от Yandex");
+        YaTranslateButton.setName("YandexTranslate"); // NOI18N
+        YaTranslateButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                YaTanslateButtonMouseClicked(evt);
+                YaTranslateButtonMouseClicked(evt);
             }
         });
 
@@ -167,7 +167,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(AddWordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(RusAddTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(RusAddWordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(YaTanslateButton))
+                    .addComponent(YaTranslateButton))
                 .addGap(35, 35, 35))
         );
         AddWordPanelLayout.setVerticalGroup(
@@ -184,7 +184,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addGroup(AddWordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(AddButton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(YaTanslateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(YaTranslateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
 
@@ -267,13 +267,13 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AddButtonMouseClicked
 
-    private void YaTanslateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YaTanslateButtonMouseClicked
+    private void YaTranslateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YaTranslateButtonMouseClicked
         try {
             RusAddTextField.setText(YandexTranslate.translate("ru", EngAddTextField.getText()));
         } catch (IOException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_YaTanslateButtonMouseClicked
+    }//GEN-LAST:event_YaTranslateButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -323,7 +323,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField RusReadTextField;
     private javax.swing.JButton TranslateButton;
     private javax.swing.JPanel TranslatePanel;
-    private javax.swing.JButton YaTanslateButton;
+    private javax.swing.JButton YaTranslateButton;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }

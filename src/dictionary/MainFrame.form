@@ -199,7 +199,7 @@
                               <Component id="RusAddTextField" max="32767" attributes="0"/>
                               <Component id="RusAddWordLabel" min="-2" pref="350" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="YaTanslateButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="YaTranslateButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
@@ -221,7 +221,7 @@
                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="AddButton" pref="40" max="32767" attributes="0"/>
-                          <Component id="YaTanslateButton" max="32767" attributes="0"/>
+                          <Component id="YaTranslateButton" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="53" max="32767" attributes="0"/>
                   </Group>
@@ -276,7 +276,7 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AddButtonMouseClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="YaTanslateButton">
+            <Component class="javax.swing.JButton" name="YaTranslateButton">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Bookman Old Style" size="24" style="0"/>
@@ -285,7 +285,7 @@
                 <Property name="name" type="java.lang.String" value="YandexTranslate" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="YaTanslateButtonMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="YaTranslateButtonMouseClicked"/>
               </Events>
             </Component>
           </SubComponents>
