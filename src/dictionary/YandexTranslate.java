@@ -27,10 +27,19 @@ import java.net.URLEncoder;
 /**
  *
  * @author Игорь
+ * @see <a href = "https://habrahabr.ru/post/261259/">Источкик кода класса YandexTranslate</a>
  */
 public class YandexTranslate {
     private static int i = 0;
-	public static String translate(String lang, String input) throws IOException {
+
+    /**
+     *
+     * @param lang Языковая пара ("en-ru") или только язык ответа ("ru")
+     * @param input Слово для перевода на английском языке (при использовании в других проектах метод может определять язык ввода(английский или русский) автоматически).
+     * @return Перевод слова.
+     * @throws IOException
+     */
+    public static String translate(String lang, String input) throws IOException {
 		//my translate api key
                 String urlStr = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20160830T202008Z.dca20e7c532187a4.b563037b8a5b88bbeef003b16684365989a69a16";
 		URL urlObj = new URL(urlStr);
