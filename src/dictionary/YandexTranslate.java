@@ -22,7 +22,6 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.net.URLEncoder;
 
 /**
  *
@@ -47,15 +46,13 @@ public class YandexTranslate {
 		connection.setRequestMethod("POST");
 		connection.setDoOutput(true);
 		DataOutputStream dataOutputStream = new DataOutputStream(connection.getOutputStream());
-		dataOutputStream.writeBytes("&text=" + input + "&lang=" + lang + "&format=plain");
-
+                dataOutputStream.writeBytes("&text=" + input + "&lang=" + lang + "&format=plain");
 		InputStream response = connection.getInputStream();
 		String json = new java.util.Scanner(response).nextLine();
-                FileWorker.write("./report.txt", json);
-		int start = json.indexOf("[");
+                int start = json.indexOf("[");
 		int end = json.indexOf("]");
-		String translated = json.substring(start + 2, end - 1);
-		i++;
+		String translated = new String(json.substring(start + 2, end - 1).getBytes(), "UTF-8");
+                i++;
 		if (translated.equals(input) && i < 2) {
 			// if return equal of entered text - we need change direction of translation
 			return translate("en", input);
