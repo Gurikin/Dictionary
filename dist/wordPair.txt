@@ -1,0 +1,38 @@
+reshape|изменить
+offering|предлагая
+convenient|удобный
+preeminent|выдающийся
+contribution|вклад
+java|ява, кофе
+charge|плата, заряд, обязанность
+except|кроме, исключая, кроме того
+constraint|ограничение
+imposed|наложенный, навязанный, установленный
+poorly|плохо, неудачно, некачественно
+devise|разработать
+similarities|сходство
+especially|особенно
+tempting|заманчиво
+however|однако
+significant|значительное
+influenced|под влиянием, влияние
+although|хотя
+enhanced|улучшенный
+neither|ни
+upwardly|вверх
+nor|ни
+downwardly|вниз
+solve|решить
+certain|некоторые
+coexist|сосуществовать
+apple|яблоко
+pen|ручка
+pencil|карандаш
+intended|предназначен
+handle|ручка, обработка, дескриптор, управление
+desirable|желательно
+obviously|очевидно, явно, конечно
+environment|окружающая среда, окружение
+malicious|вредоносных
+gained|приобрел
+gather|собрать
