@@ -29,8 +29,6 @@ import java.util.logging.Logger;
  */
 public class MainFrame extends javax.swing.JFrame {
 
-    private List[] dictionary = new List[2];
-
     /**
      * Creates new form MainFrame
      */
@@ -54,6 +52,7 @@ public class MainFrame extends javax.swing.JFrame {
         RusReadTextField = new javax.swing.JTextField();
         RusReadLabel = new javax.swing.JLabel();
         TranslateButton = new javax.swing.JButton();
+        LearnButton = new javax.swing.JButton();
         AddWordPanel = new javax.swing.JPanel();
         EngAddWordLabel = new javax.swing.JLabel();
         RusAddWordLabel = new javax.swing.JLabel();
@@ -73,16 +72,17 @@ public class MainFrame extends javax.swing.JFrame {
         jTabbedPane1.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(800, 300));
 
-        EngReadLabel.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
+        EngReadLabel.setFont(new java.awt.Font("Bookman Old Style", 0, 16)); // NOI18N
         EngReadLabel.setText("Input english word");
 
         EngReadTextField.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         EngReadTextField.setMinimumSize(new java.awt.Dimension(200, 50));
 
+        RusReadTextField.setEditable(false);
         RusReadTextField.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         RusReadTextField.setMinimumSize(new java.awt.Dimension(200, 50));
 
-        RusReadLabel.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
+        RusReadLabel.setFont(new java.awt.Font("Bookman Old Style", 0, 16)); // NOI18N
         RusReadLabel.setText("Возможный вариант перевода");
 
         TranslateButton.setFont(new java.awt.Font("Bookman Old Style", 0, 24)); // NOI18N
@@ -93,25 +93,32 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        LearnButton.setFont(new java.awt.Font("Bookman Old Style", 0, 24)); // NOI18N
+        LearnButton.setText("Учить слова");
+        LearnButton.setToolTipText("");
+        LearnButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LearnButtonMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout TranslatePanelLayout = new javax.swing.GroupLayout(TranslatePanel);
         TranslatePanel.setLayout(TranslatePanelLayout);
         TranslatePanelLayout.setHorizontalGroup(
             TranslatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TranslatePanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TranslatePanelLayout.createSequentialGroup()
                 .addContainerGap(44, Short.MAX_VALUE)
-                .addGroup(TranslatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TranslatePanelLayout.createSequentialGroup()
-                        .addGroup(TranslatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(EngReadTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(EngReadLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(TranslatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(RusReadLabel)
-                            .addComponent(RusReadTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TranslatePanelLayout.createSequentialGroup()
-                        .addComponent(TranslateButton)
-                        .addGap(326, 326, 326))))
+                .addGroup(TranslatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(TranslateButton)
+                    .addGroup(TranslatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(EngReadTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(EngReadLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(TranslatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(RusReadTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                    .addComponent(LearnButton)
+                    .addComponent(RusReadLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(39, 39, 39))
         );
         TranslatePanelLayout.setVerticalGroup(
             TranslatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,9 +131,11 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(TranslatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EngReadTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(RusReadTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addComponent(TranslateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addGroup(TranslatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TranslateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LearnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab1", TranslatePanel);
@@ -134,10 +143,10 @@ public class MainFrame extends javax.swing.JFrame {
         AddWordPanel.setMinimumSize(new java.awt.Dimension(795, 265));
         AddWordPanel.setPreferredSize(new java.awt.Dimension(795, 265));
 
-        EngAddWordLabel.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
+        EngAddWordLabel.setFont(new java.awt.Font("Bookman Old Style", 0, 16)); // NOI18N
         EngAddWordLabel.setText("Input english word");
 
-        RusAddWordLabel.setFont(new java.awt.Font("Bookman Old Style", 0, 18)); // NOI18N
+        RusAddWordLabel.setFont(new java.awt.Font("Bookman Old Style", 0, 16)); // NOI18N
         RusAddWordLabel.setText("Введите перевод английского слова");
 
         EngAddTextField.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -218,74 +227,25 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void TranslateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TranslateButtonMouseClicked
         // TODO add your handling code here:
-        try {
-            this.dictionary = FileWorker.read("./wordPair.txt");
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        List<String> engList = this.dictionary[0];
-        List<String> rusList = this.dictionary[1];
-        String searchWord = EngReadTextField.getText();
-        int searchIndex;
-        if (engList.contains(searchWord)) {
-            searchIndex = engList.indexOf(searchWord);
-            RusReadTextField.setText(rusList.get(searchIndex));
-        }
+        Dictionary.localTranslate(EngReadTextField, RusReadTextField, RusReadLabel);
     }//GEN-LAST:event_TranslateButtonMouseClicked
 
     private void AddButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddButtonMouseClicked
         // TODO add your handling code here:
-        try {
-            this.dictionary = FileWorker.read("./wordPair.txt");
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        EngAddWordLabel.setText("Input english word.");
-        RusAddWordLabel.setText("Введите перевод английского слова.");
-        String engAddWord = EngAddTextField.getText();
-        String rusAddWord = RusAddTextField.getText();
-        String wordPair = "";
-        if (engAddWord.isEmpty()) {
-            EngAddWordLabel.setText("This field can't be empty.");
-        }
-        if (rusAddWord.isEmpty()) {
-            RusAddWordLabel.setText("Это поле не может быть пустым.");
-            if (this.dictionary[0].toString().contains(engAddWord)) {
-                EngAddWordLabel.setText("Dictionary already have this word.");
-                RusAddWordLabel.setText("Это слово уже есть в словаре.");
-            }
-        }
-        if (this.dictionary[0].toString().contains(engAddWord)) {
-            EngAddWordLabel.setText("Dictionary already have this word.");
-            RusAddWordLabel.setText("Это слово уже есть в словаре.");
-        }
-        if (!engAddWord.isEmpty() && !rusAddWord.isEmpty())//EngAddTextField.toString().isEmpty())
-        {
-            if (!this.dictionary[0].toString().contains(engAddWord)) {
-                wordPair = wordPair.concat(engAddWord);
-                wordPair = wordPair.concat("|");
-                wordPair = wordPair.concat(rusAddWord);
-                wordPair = wordPair.concat("\n");
-
-                FileWorker.write("./wordPair.txt", wordPair);
-                EngAddWordLabel.setText("Input english word.");
-                RusAddWordLabel.setText("Введите перевод английского слова.");
-                EngAddTextField.setText("");
-                RusAddTextField.setText("");
-            } else {
-                EngAddWordLabel.setText("Dictionary already have this word.");
-                RusAddWordLabel.setText("Это слово уже есть в словаре.");
-            }
-        }
+        Dictionary.addWordToLocDic(EngAddTextField, RusAddTextField, EngAddWordLabel, RusAddWordLabel);
     }//GEN-LAST:event_AddButtonMouseClicked
 
     private void YaTranslateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YaTranslateButtonMouseClicked
         try {
-            RusAddTextField.setText(YandexTranslate.translate("ru", EngAddTextField.getText()));
+            RusAddTextField.setText(Dictionary.yandexTranslate("ru", EngAddTextField.getText()));
         } catch (IOException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_YaTranslateButtonMouseClicked
+
+    private void LearnButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LearnButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LearnButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -329,6 +289,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel EngAddWordLabel;
     private javax.swing.JLabel EngReadLabel;
     private javax.swing.JTextField EngReadTextField;
+    private javax.swing.JButton LearnButton;
     private javax.swing.JTextField RusAddTextField;
     private javax.swing.JLabel RusAddWordLabel;
     private javax.swing.JLabel RusReadLabel;
