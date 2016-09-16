@@ -36,3 +36,13 @@ environment|окружающая среда, окружение
 malicious|вредоносных
 gained|приобрел
 gather|собрать
+table|Таблица
+wonder|интересно
+embed|вставлять, врезать, внедрять
+collaborative|совместный, общий, объединенный
+effort|усилие, попытка, напряжение
+patch|заплата
+involvement|участие, вовлечение
+beneath|под, внизу
+resolved|решен
+poor|бедный

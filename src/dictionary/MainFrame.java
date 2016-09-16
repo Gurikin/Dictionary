@@ -15,6 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
+
 package dictionary;
 
 import java.io.FileNotFoundException;
@@ -226,12 +227,10 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TranslateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TranslateButtonMouseClicked
-        // TODO add your handling code here:
         Dictionary.localTranslate(EngReadTextField, RusReadTextField, RusReadLabel);
     }//GEN-LAST:event_TranslateButtonMouseClicked
 
     private void AddButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddButtonMouseClicked
-        // TODO add your handling code here:
         Dictionary.addWordToLocDic(EngAddTextField, RusAddTextField, EngAddWordLabel, RusAddWordLabel);
     }//GEN-LAST:event_AddButtonMouseClicked
 
@@ -244,7 +243,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_YaTranslateButtonMouseClicked
 
     private void LearnButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LearnButtonMouseClicked
-        // TODO add your handling code here:
+        // TODO Method for form learning word pair their.
     }//GEN-LAST:event_LearnButtonMouseClicked
 
     /**

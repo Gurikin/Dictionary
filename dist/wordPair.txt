@@ -37,3 +37,12 @@ malicious|вредоносных
 gained|приобрел
 gather|собрать
 table|“аблица
+wonder|интересно
+embed|вставл€ть, врезать, внедр€ть
+collaborative|совместный, общий, объединенный
+effort|усилие, попытка, напр€жение
+patch|заплата
+involvement|участие, вовлечение
+beneath|под, внизу
+resolved|решен
+poor|бедный

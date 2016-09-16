@@ -22,6 +22,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -80,13 +81,15 @@ public class Dictionary {
      * @param RusReadTextField Объект JTextField, где будет показан перевод
      * @param RusReadLabel Объект JLabel с комментариями к ходу работы программы
      */
+    //TODO Fix it: if I'm press translate button, and file "wordPair.txt" don't exist - do nothing
+    // see also FileWorker.read()
     public static void localTranslate(javax.swing.JTextField EngReadTextField, javax.swing.JTextField RusReadTextField, javax.swing.JLabel RusReadLabel) {
         dictionary = getDictionary("./wordPair.txt");
         List<String> engList = dictionary[0];
         List<String> rusList = dictionary[1];
         String searchWord = EngReadTextField.getText();
         int searchIndex;
-        if (engList.contains(searchWord)) {
+        if (findWordLocal(searchWord)) {
             RusReadLabel.setText("Возможный вариант перевода");
             searchIndex = engList.indexOf(searchWord);
             RusReadTextField.setText(rusList.get(searchIndex));
@@ -108,11 +111,8 @@ public class Dictionary {
      * @param RusAddWordLabel Пояснения к русским словам
      */
     public static void addWordToLocDic(javax.swing.JTextField EngAddTextField, javax.swing.JTextField RusAddTextField, javax.swing.JLabel EngAddWordLabel, javax.swing.JLabel RusAddWordLabel) {
-        try {
-            dictionary = FileWorker.read("./wordPair.txt");
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        // TODO fix bug with word add. Don't add the word to the dictionary if find just a part of english word
+        dictionary = getDictionary("./wordPair.txt");
         EngAddWordLabel.setText("Input english word.");
         RusAddWordLabel.setText("Введите перевод английского слова.");
         String engAddWord = EngAddTextField.getText();
@@ -123,18 +123,17 @@ public class Dictionary {
         }
         if (rusAddWord.isEmpty()) {
             RusAddWordLabel.setText("Это поле не может быть пустым.");
-            if (dictionary[0].toString().contains(engAddWord)) {
-                EngAddWordLabel.setText("Dictionary already have this word.");
-                RusAddWordLabel.setText("Это слово уже есть в словаре.");
-            }
         }
-        if (dictionary[0].toString().contains(engAddWord)) {
+        if (findWordLocal(engAddWord)) {
             EngAddWordLabel.setText("Dictionary already have this word.");
             RusAddWordLabel.setText("Это слово уже есть в словаре.");
         }
         if (!engAddWord.isEmpty() && !rusAddWord.isEmpty())
         {
-            if (!dictionary[0].toString().contains(engAddWord)) {
+            if (findWordLocal(engAddWord)) {
+                EngAddWordLabel.setText("Dictionary already have this word.");
+                RusAddWordLabel.setText("Это слово уже есть в словаре.");
+            } else {
                 wordPair = wordPair.concat(engAddWord);
                 wordPair = wordPair.concat("|");
                 wordPair = wordPair.concat(rusAddWord);
@@ -145,10 +144,22 @@ public class Dictionary {
                 RusAddWordLabel.setText("Введите перевод английского слова.");
                 EngAddTextField.setText("");
                 RusAddTextField.setText("");
-            } else {
-                EngAddWordLabel.setText("Dictionary already have this word.");
-                RusAddWordLabel.setText("Это слово уже есть в словаре.");
             }
         }
+    }
+    private static boolean findWordLocal(String searchWord) {
+        try {
+            dictionary = FileWorker.read("./wordPair.txt");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        for (Iterator it = dictionary[0].iterator(); it.hasNext();) {
+            String sourceWord = it.next().toString();
+            if (sourceWord.equals(searchWord)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
