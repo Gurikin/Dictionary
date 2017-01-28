@@ -46,3 +46,21 @@ involvement|участие, вовлечение
 beneath|под, внизу
 resolved|решен
 poor|бедный
+arm-chair|кресло
+chair|стул
+surface|поверхность
+opinion|отзыв
+resolve|решения
+fill|заполнить
+repository|хранилище, архив
+quietly|тихо
+fullfill|выполнить
+tampering|подделки
+directly|напрямую
+precisely|точно
+thus|таким образом,
+implemented|реализован
+correctly|правильно
+solution|решение
+simultaneous|одновременно
+entry|запись
