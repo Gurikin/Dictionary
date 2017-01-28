@@ -80,7 +80,7 @@ public class Dictionary {
      * @param RusReadTextField Объект JTextField, где будет показан перевод
      * @param RusReadLabel Объект JLabel с комментариями к ходу работы программы
      */
-    public static void localTranslate(javax.swing.JTextField EngReadTextField, javax.swing.JTextField RusReadTextField, javax.swing.JLabel RusReadLabel) {
+    public static String localTranslate(javax.swing.JTextField EngReadTextField, javax.swing.JTextField RusReadTextField, javax.swing.JLabel RusReadLabel) throws IOException {
         dictionary = getDictionary("./wordPair.txt");
         List<String> engList = dictionary[0];
         List<String> rusList = dictionary[1];
@@ -89,15 +89,14 @@ public class Dictionary {
         if (engList.contains(searchWord)) {
             RusReadLabel.setText("Возможный вариант перевода");
             searchIndex = engList.indexOf(searchWord);
-            RusReadTextField.setText(rusList.get(searchIndex));
+            return rusList.get(searchIndex);
         } else if(!searchWord.equals("")) {
-            RusReadLabel.setText("Не нашлось... Обратитесь к вкладке 2");
-            RusReadTextField.setText("");
+            RusReadLabel.setText("Перевод от Yandex Translate");
+            return yandexTranslate("ru", EngReadTextField.getText());
         } else {
             RusReadLabel.setText("Поле ввода не может быть путым");
-            RusReadTextField.setText("");
-        }
-        
+            return "";
+        }       
     }
     
     /**

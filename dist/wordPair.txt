@@ -36,4 +36,5 @@ environment|окружающая среда, окружение
 malicious|вредоносных
 gained|приобрел
 gather|собрать
-table|Таблица
+many|многие
+trouble|беда
