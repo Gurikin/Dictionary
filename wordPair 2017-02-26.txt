@@ -70,26 +70,3 @@ advantage|преимущество
 conveying|развозка
 cautioned|получает
 against|против
-cucumber|огурец
-invalidate|недействительным
-delivery|доставка
-renowned|известный
-technicians|техники
-degree|степень
-gained|приобрел
-fluent|свободно
-affirmative|позитивные
-negative|негативные
-interrogative|вопросительно
-spelling changes|орфографические изменения
-Naples|Неаполь
-you're in talks|вы ведете переговоры
-are laying off|увольняют
-downsizing|сокращение
-bringing out|выпуск, выдача
-head supplier|глава поставщиков
-deal for a contract|сделки по договору
-habits|привычки
-schedules|расписание
-thoughts|мысли
-feeling|чувство

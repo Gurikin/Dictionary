@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 /**
  *
@@ -45,7 +46,6 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
         TranslatePanel = new javax.swing.JPanel();
         EngReadLabel = new javax.swing.JLabel();
         EngReadTextField = new javax.swing.JTextField();
@@ -63,16 +63,17 @@ public class MainFrame extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(800, 300));
         setType(java.awt.Window.Type.POPUP);
 
-        jTabbedPane1.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jTabbedPane1.setPreferredSize(new java.awt.Dimension(800, 300));
-
         EngReadLabel.setFont(new java.awt.Font("Bookman Old Style", 0, 16)); // NOI18N
         EngReadLabel.setText("Input english word");
 
         EngReadTextField.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         EngReadTextField.setMinimumSize(new java.awt.Dimension(200, 50));
+        EngReadTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EngReadTextFieldKeyPressed(evt);
+            }
+        });
 
-        RusReadTextField.setEditable(false);
         RusReadTextField.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         RusReadTextField.setMinimumSize(new java.awt.Dimension(200, 50));
 
@@ -146,17 +147,21 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab1", TranslatePanel);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 1, Short.MAX_VALUE)
+                .addComponent(TranslatePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 16, Short.MAX_VALUE)
+                .addComponent(TranslatePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 17, Short.MAX_VALUE))
         );
 
         pack();
@@ -164,20 +169,33 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void TranslateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TranslateButtonMouseClicked
         try {
-            // TODO add your handling code here:
             RusReadTextField.setText(Dictionary.localTranslate(EngReadTextField, RusReadTextField, RusReadLabel));
         } catch (IOException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
+        EngReadTextField.requestFocus();
     }//GEN-LAST:event_TranslateButtonMouseClicked
 
     private void LearnButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LearnButtonMouseClicked
-        // TODO add your handling code here:
+        LearnJDialog learnDialog = new LearnJDialog(this, true);
+        learnDialog.setVisible(true);
     }//GEN-LAST:event_LearnButtonMouseClicked
 
     private void AddButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddButtonMouseClicked
         Dictionary.addWordToLocDic(EngReadTextField, RusReadTextField, EngReadLabel, RusReadLabel);
+        EngReadTextField.requestFocus();
     }//GEN-LAST:event_AddButtonMouseClicked
+
+    private void EngReadTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EngReadTextFieldKeyPressed
+        //System.out.println(evt.getExtendedKeyCode());
+        if (evt.getExtendedKeyCode() == 10) {
+            try {
+                RusReadTextField.setText(Dictionary.localTranslate(EngReadTextField, RusReadTextField, RusReadLabel));
+            } catch (IOException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }        
+    }//GEN-LAST:event_EngReadTextFieldKeyPressed
 
     /**
      * @param args the command line arguments
@@ -223,6 +241,5 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField RusReadTextField;
     private javax.swing.JButton TranslateButton;
     private javax.swing.JPanel TranslatePanel;
-    private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }

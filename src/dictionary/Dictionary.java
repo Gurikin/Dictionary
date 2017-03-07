@@ -150,4 +150,20 @@ public class Dictionary {
             }
         }
     }
+    
+    public static String[] learnWords(int i) {
+        String[] result = new String[2];
+        dictionary = getDictionary("./wordPair.txt");
+        List<String> engList = dictionary[0];
+        List<String> rusList = dictionary[1];
+        if (i> engList.size()) {
+            i = engList.size();
+        }
+        if (i < 0) {
+            i = 0;
+        }       
+        result[0] = engList.get(i);
+        result[1] = rusList.get(i);
+        return result;
+    }
 }
